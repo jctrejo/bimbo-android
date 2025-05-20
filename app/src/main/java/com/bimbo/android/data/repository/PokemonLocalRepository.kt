@@ -3,6 +3,7 @@ package com.bimbo.android.data.repository
 import com.bimbo.android.data.api.PokeApiService
 import com.bimbo.android.data.db.dao.PokemonDao
 import com.bimbo.android.data.model.PokemonEntity
+import com.bimbo.android.domain.model.PokemonDetail
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,6 +29,18 @@ class PokemonLocalRepository @Inject constructor(
             dao.insertPokemons(pokemonEntities)
             pokemonEntities
         }
+    }
+
+    suspend fun getPokemonDetail(nameOrId: String): PokemonDetail {
+        val response = apiService.getPokemonDetail(nameOrId)
+        return PokemonDetail(
+            id = response.id,
+            name = response.name,
+            imageUrl = response.sprites.frontDefault,
+            height = response.height,
+            weight = response.weight,
+            types = response.types.sortedBy { it.slot }.map { it.type.name }
+        )
     }
 
     suspend fun getPokemonByName(name: String): PokemonEntity? {

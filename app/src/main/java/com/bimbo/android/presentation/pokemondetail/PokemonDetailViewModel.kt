@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bimbo.android.data.model.PokemonEntity
 import com.bimbo.android.data.repository.PokemonLocalRepository
+import com.bimbo.android.domain.model.PokemonDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,13 +15,17 @@ class PokemonDetailViewModel @Inject constructor(
     private val repository: PokemonLocalRepository
 ) : ViewModel() {
 
-    private val _pokemonDetail = MutableLiveData<PokemonEntity?>()
-    val pokemonDetail: LiveData<PokemonEntity?> = _pokemonDetail
+    private val _pokemonDetail = MutableLiveData<PokemonDetail>()
+    val pokemonDetail: LiveData<PokemonDetail> = _pokemonDetail
 
-    fun loadPokemonDetail(name: String) {
+    fun loadPokemonDetail(nameOrId: String) {
         viewModelScope.launch {
-            val pokemon = repository.getPokemonByName(name)
-            _pokemonDetail.postValue(pokemon)
+            try {
+                val detail = repository.getPokemonDetail(nameOrId)
+                _pokemonDetail.postValue(detail)
+            } catch (e: Exception) {
+                // Manejar error (mostrar mensaje, etc)
+            }
         }
     }
 }

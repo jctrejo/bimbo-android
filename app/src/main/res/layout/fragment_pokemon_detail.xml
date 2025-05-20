@@ -1,34 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.pokemondetail.PokemonDetailFragment">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="24dp">
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ivPokemon"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:text="Pokemon Name" />
+            android:layout_margin="8dp"
+            android:background="@drawable/card_background"
+            android:clipToPadding="false"
+            android:elevation="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <!-- Aquí puedes agregar más detalles -->
+            <!-- Imagen del Pokémon con sombra y borde -->
+            <ImageView
+                android:id="@+id/ivPokemon"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/image_border_shadow"
+                android:scaleType="fitCenter" />
 
-    </LinearLayout>
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:shadowColor="#FF000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="Nombre"
+                android:textColor="#FFCB05"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
+            <!-- Altura -->
+            <TextView
+                android:id="@+id/tvHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Height: 0"
+                android:textColor="#3B4CCA"
+                android:textSize="18sp" />
+
+            <!-- Peso -->
+            <TextView
+                android:id="@+id/tvWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Weight: 0"
+                android:textColor="#3B4CCA"
+                android:textSize="18sp" />
+
+            <!-- Tipos con fondo colorido -->
+            <TextView
+                android:id="@+id/tvTypes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="Types: None"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
