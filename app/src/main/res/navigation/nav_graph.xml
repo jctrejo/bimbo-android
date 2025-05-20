@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.bimbo.android.presentation.login.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_loginFragment_to_pokemonListFragment"
+            app:destination="@id/pokemonListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pokemonListFragment"
+        android:name="com.bimbo.android.presentation.pokemonlist.PokemonListFragment"
+        android:label="Pokemons">
+        <action
+            android:id="@+id/action_pokemonListFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.bimbo.android.presentation.pokemondetail.PokemonDetailFragment"
+        android:label="Pokemon Detail">
+        <argument
+            android:name="pokemonName"
+            app:argType="string" />
+    </fragment>
+</navigation>

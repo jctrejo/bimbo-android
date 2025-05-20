@@ -1,0 +1,12 @@
+package com.bimbo.android.domain.usecase
+
+import com.bimbo.android.domain.model.Pokemon
+import com.bimbo.android.domain.repository.PokemonRepository
+import javax.inject.Inject
+
+/*
+class GetPokemonListUseCase @Inject constructor(
+    private val repository: PokemonRepository
+) {
+    suspend operator fun invoke(): List<Pokemon> = repository.getPokemonList()
+}*/
