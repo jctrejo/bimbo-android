@@ -25,13 +25,31 @@ android {
         arg("room.schemaLocation", "$projectDir/schemas")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+    android {
+        buildTypes {
+            // Configuración para el build de 'release'
+            getByName("release") {
+                // Habilita la ofuscación y reducción de código con R8/ProGuard
+                isMinifyEnabled = true
+
+                // Habilita la eliminación de recursos no usados para reducir tamaño APK
+                isShrinkResources = true
+
+                // Archivos de reglas ProGuard/R8 que se aplican en la ofuscación
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"), // reglas estándar recomendadas
+                    "proguard-rules.pro" // reglas personalizadas del proyecto
+                )
+            }
+
+            // Configuración para el build de 'debug'
+            getByName("debug") {
+                // Deshabilita la ofuscación para facilitar el debugging
+                isMinifyEnabled = false
+
+                // Deshabilita la eliminación de recursos para evitar problemas durante desarrollo
+                isShrinkResources = false
+            }
         }
     }
 
@@ -43,8 +61,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
+    // Habilita características específicas del build, como View Binding
     buildFeatures {
+        // Activa View Binding para generar automáticamente clases binding
+        // que facilitan el acceso a las vistas sin usar findViewById
         viewBinding = true
     }
 }
@@ -63,6 +83,11 @@ dependencies {
     // Retrofit2
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    // okhttp3
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp.urlconnection)
 
     // Hilt
     implementation(libs.hilt.android)
@@ -85,4 +110,7 @@ dependencies {
 
     //Glide
     implementation(libs.glide.v4120)
+
+    // Lottie
+    implementation(libs.lottie)
 }

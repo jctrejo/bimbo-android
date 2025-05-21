@@ -4,31 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp">
+    android:background="@color/white"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="6dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:layout_height="120dp"
+        android:background="@drawable/bg_pokemon_item"
         android:padding="12dp">
 
-        <ImageView
+        <!-- Imagen del Pokémon -->
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivPokemon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:scaleType="centerInside" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter" />
 
-        <TextView
+        <!-- Nombre -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvName"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="16dp"
-            android:text="Pokemon Name"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/ivPokemon"
+            android:shadowColor="#66000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Bulbasaur"
+            android:textColor="#FFCB05"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

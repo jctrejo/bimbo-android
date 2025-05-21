@@ -1,4 +1,4 @@
-package com.bimbo.android.data.common
+package com.bimbo.android.common
 
 sealed class AppResource<out T> {
     object Loading : AppResource<Nothing>()

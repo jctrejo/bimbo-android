@@ -3,6 +3,8 @@ package com.bimbo.android.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
+import com.bimbo.android.common.Constants.DB_POKEMON
+import com.bimbo.android.common.Constants.URL_BASE
 import com.bimbo.android.data.api.PokeApiService
 import com.bimbo.android.data.db.PokemonDatabase
 import com.bimbo.android.data.db.dao.PokemonDao
@@ -22,7 +24,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://pokeapi.co/api/v2/")
+        .baseUrl(URL_BASE)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -34,7 +36,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): PokemonDatabase =
-        Room.databaseBuilder(context, PokemonDatabase::class.java, "pokemon-db").build()
+        Room.databaseBuilder(context, PokemonDatabase::class.java, DB_POKEMON).build()
 
     @Provides
     @Singleton
@@ -45,5 +47,3 @@ object AppModule {
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
 }
-
-
