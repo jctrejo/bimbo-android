@@ -42,6 +42,30 @@ app/
 │            └── PokemonAdapter.kt
 └── ...
 
+
+
+## Integración de Room
+Entity (Entidad)
+Representa una tabla en la base de datos. Cada instancia de una entidad corresponde a una fila en la tabla.
+
+DAO (Data Access Object)
+Define los métodos para acceder y manipular los datos (consultas, inserciones, actualizaciones, borrados).
+
+Database (Base de datos)
+Clase abstracta que extiende RoomDatabase y provee acceso a los DAOs.
+
+Resultado:
+![image](https://github.com/user-attachments/assets/65206874-2554-41b1-8afc-dfe74b5e9500)
+
+Buenas prácticas
+Siempre limpiar referencias a la base de datos en onDestroy si es necesario.
+
+Usar migraciones para cambios en el esquema.
+
+Aprovechar RoomDatabase.Builder para configurar la base de datos.
+
+Usar @Transaction para operaciones atómicas complejas.
+
 # Uso de SharedPreferences para guardar datos en Android
 ¿Qué datos se guardan?
 Durante el proceso de login, se suelen guardar datos esenciales para mantener la sesión activa y mejorar la experiencia del usuario, tales como:
