@@ -36,8 +36,10 @@ class PokemonDetailFragment : Fragment() {
     /** ViewModel asociado que provee los detalles del Pokémon */
     private val viewModel: PokemonDetailViewModel by viewModels()
 
+    /**
+     * Diálogo personalizado para mostrar una pantalla de carga.
+     */
     private lateinit var loader: LoadingDialog
-
     /**
      * Infla el layout del fragmento usando ViewBinding.
      *

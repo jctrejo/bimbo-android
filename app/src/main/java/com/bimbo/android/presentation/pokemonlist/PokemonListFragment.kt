@@ -17,16 +17,16 @@ import com.bimbo.android.common.AppUiState
 import com.bimbo.android.common.Constants.EMPTY
 import com.bimbo.android.databinding.FragmentPokemonListBinding
 import com.bimbo.android.utils.extensions.navigateToMainAndClearStack
+import com.bimbo.android.utils.extensions.onClick
 import com.bimbo.android.utils.loader.LoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-
 /**
- * Fragmento que muestra una lista de Pokémon.
+ * Fragmento que muestra una lista de Pokémon y gestiona la sesión del usuario.
  *
  * Utiliza Hilt para la inyección de dependencias ([AndroidEntryPoint]).
- * Este fragmento se encarga de mostrar la lista de Pokémon,
- * permitir la navegación al detalle de cada Pokémon y gestionar el logout del usuario.
+ * Este fragmento observa el estado de la UI para mostrar carga, errores o datos,
+ * permite navegar al detalle de cada Pokémon y gestionar el logout del usuario.
  */
 @AndroidEntryPoint
 class PokemonListFragment : Fragment() {
@@ -48,6 +48,9 @@ class PokemonListFragment : Fragment() {
      */
     private lateinit var adapter: PokemonAdapter
 
+    /**
+     * Diálogo personalizado para mostrar una pantalla de carga.
+     */
     private lateinit var loader: LoadingDialog
 
     /**
@@ -67,7 +70,7 @@ class PokemonListFragment : Fragment() {
 
     /**
      * Se llama después de que la vista del fragmento ha sido creada.
-     * Aquí se configuran las vistas y se observa el LiveData del ViewModel.
+     * Inicializa el diálogo de carga y configura las vistas y observadores.
      *
      * @param view Vista del fragmento.
      * @param savedInstanceState Bundle que contiene el estado previamente guardado del fragmento.
@@ -81,6 +84,7 @@ class PokemonListFragment : Fragment() {
     /**
      * Configura las vistas del fragmento, incluyendo el RecyclerView,
      * la observación del flujo de nombre de usuario y el listener del botón de logout.
+     * También inicia la carga de datos.
      */
     private fun setupView() = binding.apply {
         observer()
@@ -93,53 +97,45 @@ class PokemonListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.usernameFlow.collect { username ->
-                    binding.tvUserName.text = getString(R.string.user_greeting, username ?: EMPTY)
+                    tvUserName.text = getString(R.string.user_greeting, username ?: EMPTY)
                 }
             }
         }
 
         // Configura el listener del botón de logout
-        btnLogout.setOnClickListener {
-            viewModel.clearUserSession(binding.root.context)
+        btnLogout.onClick {
+            viewModel.clearUserSession(root.context)
             viewModel.logOut(false)
             navigateToMainAndClearStack(MainActivity::class.java)
         }
     }
 
+    /**
+     * Observa el estado UI de la lista de Pokémon y actualiza la interfaz en consecuencia.
+     * Muestra un diálogo de carga, maneja errores o actualiza la lista cuando hay datos.
+     */
     private fun observer() {
-        // Observa la lista de Pokémon y actualiza el adapter
-        viewModel.apply {
-            pokemonList.observe(viewLifecycleOwner) { state ->
-                when (state) {
-                    is AppUiState.Loading -> {
-                        loader.show()
-                    }
-
-                    is AppUiState.Error -> {
-                        loader.dismiss()
-                    }
-
-                    is AppUiState.Success -> {
-                        adapter.submitList(state.data)
-                        loader.dismiss()
-                    }
-
-                    else -> {}
+        viewModel.pokemonList.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is AppUiState.Loading -> loader.show()
+                is AppUiState.Error -> loader.dismiss()
+                is AppUiState.Success -> {
+                    adapter.submitList(state.data)
+                    loader.dismiss()
                 }
+                else -> {}
             }
         }
     }
 
     /**
      * Configura el RecyclerView y su adapter.
-     * También observa el LiveData de la lista de Pokémon y actualiza el adapter cuando cambian los datos.
+     * Define la acción a realizar al hacer clic en un ítem, navegando al detalle del Pokémon.
      */
     private fun setupAdapter() = binding.apply {
         adapter = PokemonAdapter { pokemon ->
-            val action =
-                PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment(
-                    pokemon.name
-                )
+            val action = PokemonListFragmentDirections
+                .actionPokemonListFragmentToPokemonDetailFragment(pokemon.name)
             findNavController().navigate(action)
         }
 
