@@ -66,7 +66,7 @@ Aprovechar RoomDatabase.Builder para configurar la base de datos.
 
 Usar @Transaction para operaciones atómicas complejas.
 
-# Uso de SharedPreferences para guardar datos en Android
+# Uso de SharedPreferences de guardado de datos
 ¿Qué datos se guardan?
 Durante el proceso de login, se suelen guardar datos esenciales para mantener la sesión activa y mejorar la experiencia del usuario, tales como:
 
@@ -81,7 +81,7 @@ Los datos se mantienen aunque la app se cierre o el dispositivo se reinicie.
 
 El archivo es privado para la app, accesible solo desde ella (modo MODE_PRIVATE).
 
-# Ofuscación del código en la aplicación
+# Ofuscación del código en la aplicación (release)
 
 Para proteger la propiedad intelectual y dificultar la ingeniería inversa, nuestra aplicación utiliza la ofuscación de código en el build de release mediante herramientas como ProGuard y R8.
 
