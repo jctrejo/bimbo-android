@@ -50,7 +50,31 @@ app/
 │
 └── ...
 
-# Uso de SharedPreferences para guardar datos en Android
+
+
+## Integración de Room
+Entity (Entidad)
+Representa una tabla en la base de datos. Cada instancia de una entidad corresponde a una fila en la tabla.
+
+DAO (Data Access Object)
+Define los métodos para acceder y manipular los datos (consultas, inserciones, actualizaciones, borrados).
+
+Database (Base de datos)
+Clase abstracta que extiende RoomDatabase y provee acceso a los DAOs.
+
+Resultado:
+![image](https://github.com/user-attachments/assets/65206874-2554-41b1-8afc-dfe74b5e9500)
+
+Buenas prácticas
+Siempre limpiar referencias a la base de datos en onDestroy si es necesario.
+
+Usar migraciones para cambios en el esquema.
+
+Aprovechar RoomDatabase.Builder para configurar la base de datos.
+
+Usar @Transaction para operaciones atómicas complejas.
+
+# Uso de SharedPreferences de guardado de datos
 ¿Qué datos se guardan?
 Durante el proceso de login, se suelen guardar datos esenciales para mantener la sesión activa y mejorar la experiencia del usuario, tales como:
 
@@ -65,7 +89,7 @@ Los datos se mantienen aunque la app se cierre o el dispositivo se reinicie.
 
 El archivo es privado para la app, accesible solo desde ella (modo MODE_PRIVATE).
 
-# Ofuscación del código en la aplicación
+# Ofuscación del código en la aplicación (release)
 
 Para proteger la propiedad intelectual y dificultar la ingeniería inversa, nuestra aplicación utiliza la ofuscación de código en el build de release mediante herramientas como ProGuard y R8.
 
