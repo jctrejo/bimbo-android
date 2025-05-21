@@ -16,9 +16,9 @@ import com.bimbo.android.R
 import com.bimbo.android.common.AppUiState
 import com.bimbo.android.common.Constants.EMPTY
 import com.bimbo.android.databinding.FragmentPokemonListBinding
-import com.bimbo.android.utils.extensions.navigateToMainAndClearStack
-import com.bimbo.android.utils.extensions.onClick
-import com.bimbo.android.utils.loader.LoadingDialog
+import com.bimbo.android.common.utils.extensions.navigateToMainAndClearStack
+import com.bimbo.android.common.utils.extensions.onClick
+import com.bimbo.android.common.utils.loader.LoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 /**

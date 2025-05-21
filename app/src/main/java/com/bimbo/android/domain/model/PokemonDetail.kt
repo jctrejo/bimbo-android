@@ -6,5 +6,6 @@ data class PokemonDetail(
     val imageUrl: String?,
     val height: Int,
     val weight: Int,
-    val types: List<String>
+    val types: List<String>,
+    val description: String? = null
 )

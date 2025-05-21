@@ -1,12 +1,15 @@
 package com.bimbo.android.domain.model
 
+import com.bimbo.android.common.Constants.EMPTY
+
 data class PokemonDetailResponse(
     val id: Int,
     val name: String,
     val sprites: Sprites,
     val height: Int,
     val weight: Int,
-    val types: List<TypeSlot>
+    val types: List<TypeSlot>,
+    val description: String? = EMPTY
 )
 
 data class TypeSlot(

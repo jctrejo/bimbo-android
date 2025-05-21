@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bimbo.android.data.db.model.PokemonEntity
 import com.bimbo.android.databinding.ItemPokemonBinding
-import com.bimbo.android.utils.extensions.onClick
+import com.bimbo.android.common.utils.extensions.onClick
 import com.bumptech.glide.Glide
 
 /**

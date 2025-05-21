@@ -7,15 +7,46 @@
     android:background="@color/white"
     tools:context=".presentation.pokemondetail.PokemonDetailFragment">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/back_button_image"
+            android:layout_width="@dimen/margin_padding_32"
+            android:layout_height="@dimen/margin_padding_32"
+            android:tint="@color/primary500"
+            android:src="@drawable/ic_arrow_left" />
+
+        <!-- Title -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_padding_16"
+            android:shadowColor="@color/black"
+            android:text="@string/detail"
+            android:textAppearance="@style/bodyPrimary16Text"
+            android:textColor="@color/primary500"
+            android:textSize="@dimen/font_16" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
     <ScrollView
         android:id="@+id/container_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:padding="@dimen/margin_padding_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <LinearLayout
             android:id="@+id/container"
@@ -60,8 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_padding_8"
                 android:text="@string/height_label"
-                android:textColor="@color/primary500"
-                android:textSize="@dimen/size_18" />
+                android:textAppearance="@style/bodyPrimary16Text" />
 
             <!-- Peso -->
             <com.google.android.material.textview.MaterialTextView
@@ -70,8 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_padding_8"
                 android:text="@string/weight_label"
-                android:textColor="@color/primary500"
-                android:textSize="@dimen/font_18" />
+                android:textAppearance="@style/bodyPrimary16Text" />
 
             <!-- Tipos con fondo colorido -->
             <com.google.android.material.textview.MaterialTextView

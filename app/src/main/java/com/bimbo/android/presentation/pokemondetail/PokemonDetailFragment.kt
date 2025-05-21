@@ -10,11 +10,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bimbo.android.R
 import com.bimbo.android.common.AppUiState
 import com.bimbo.android.databinding.FragmentPokemonDetailBinding
-import com.bimbo.android.utils.enum.PokemonType
-import com.bimbo.android.utils.loader.LoadingDialog
+import com.bimbo.android.common.utils.enum.PokemonType
+import com.bimbo.android.common.utils.extensions.onClick
+import com.bimbo.android.common.utils.loader.LoadingDialog
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -113,9 +115,9 @@ class PokemonDetailFragment : Fragment() {
      *
      * @param types Lista de tipos del Pokémon
      */
-    private fun setupView(types: List<String> = emptyList()) {
+    private fun setupView(types: List<String> = emptyList()) = binding.apply {
         types.forEach { type ->
-            val typeView = TextView(binding.root.context).apply {
+            val typeView = TextView(root.context).apply {
                 text = type.replaceFirstChar { it.uppercase() }
                 setTextColor(Color.WHITE)
                 setPadding(12, 6, 12, 6)
@@ -128,7 +130,11 @@ class PokemonDetailFragment : Fragment() {
                 params.setMargins(20, 5, 20, 5)
                 layoutParams = params
             }
-            binding.container.addView(typeView)
+            container.addView(typeView)
+        }
+
+        backButtonImage.onClick {
+            findNavController().popBackStack()
         }
     }
 

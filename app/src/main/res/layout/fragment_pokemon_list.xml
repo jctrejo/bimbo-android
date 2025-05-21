@@ -8,49 +8,57 @@
     tools:context=".presentation.pokemonlist.PokemonListFragment">
 
     <LinearLayout
-        android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:padding="@dimen/margin_padding_16">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@android:color/white">
 
+            <!-- Title -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@string/user_greeting"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/margin_padding_16"
+                android:shadowColor="@color/black"
+                android:textAppearance="@style/bodyPrimary16Text" />
 
-            <ImageButton
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/logout"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
+                android:layout_width="@dimen/margin_padding_32"
+                android:layout_height="@dimen/margin_padding_32"
+                android:layout_gravity="right"
+                android:layout_marginEnd="@dimen/margin_padding_16"
                 android:src="@drawable/ic_logout"
                 android:tint="@color/primary500" />
 
-        </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPokemonList"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_padding_12"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:paddingBottom="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_padding_16">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPokemonList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_padding_12"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/margin_padding_8"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

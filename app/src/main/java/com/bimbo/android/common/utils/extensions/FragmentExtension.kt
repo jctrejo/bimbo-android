@@ -1,4 +1,4 @@
-package com.bimbo.android.utils.extensions
+package com.bimbo.android.common.utils.extensions
 
 import android.content.Intent
 import androidx.fragment.app.Fragment

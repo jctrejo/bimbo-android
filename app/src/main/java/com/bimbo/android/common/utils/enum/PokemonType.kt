@@ -1,4 +1,4 @@
-package com.bimbo.android.utils.enum
+package com.bimbo.android.common.utils.enum
 
 import androidx.annotation.DrawableRes;
 import com.bimbo.android.R

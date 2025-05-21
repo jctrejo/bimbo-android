@@ -1,4 +1,12 @@
 # bimbo-android
+
+## Descripción del Proyecto
+Este proyecto es una aplicación Android que permite consultar y mostrar detalles completos de Pokémon, incluyendo su nombre, imagen, altura, peso y tipos. Está desarrollada con las mejores prácticas de arquitectura moderna, utilizando MVVM, Kotlin Coroutines, Flow y la inyección de dependencias con Hilt para garantizar un código limpio, modular y fácil de mantener.
+La interfaz es reactiva y dinámica, actualizándose automáticamente según el estado de la carga de datos (cargando, éxito o error), y ofrece una experiencia visual atractiva con animaciones y estilos personalizados para cada tipo de Pokémon.
+Este proyecto sirve como ejemplo práctico para aprender a integrar APIs REST, manejar estados de UI, usar bases de datos locales con Room y aplicar patrones de diseño recomendados en el desarrollo Android.
+
+Se documentó el código explicando claramente la funcionalidad de las clases y funciones principales, detallando sus parámetros, procesos internos y manejo de estados. Esto facilita la comprensión, mantenimiento y escalabilidad del proyecto, asegurando que otros desarrolladores puedan entender y continuar el trabajo de forma eficiente.
+
 ## Estructura del Proyecto con MVVM y Clean Architecture
 
 Capas principales en Clean Architecture para Android
@@ -31,15 +39,15 @@ app/
 │   │        └── GetPokemonsUseCase.kt
 │   └── presentation/
 │       ├── ui/                # Activities, Fragments, navegación
-│       │    ├── pokemonlist/
-│       │    │     └── PokemonListFragment.kt
-│       │    └── pokemondetail/
-│       │          └── PokemonDetailFragment.kt
-│       ├── viewmodel/         # ViewModels
-│       │    ├── PokemonListViewModel.kt
-│       │    └── PokemonDetailViewModel.kt
-│       └── adapter/           # Adaptadores RecyclerView
-│            └── PokemonAdapter.kt
+│           ├── pokemonlist/
+│           │     └── PokemonListFragment.kt
+│           │     └── PokemonListViewModel.kt
+│           │          └── adapter/           # Adaptadores RecyclerView
+│           └── pokemondetail/
+│                 └── PokemonDetailFragment.kt
+│                 └── PokemonDetailFragment.kt
+│       
+│
 └── ...
 
 # Uso de SharedPreferences para guardar datos en Android

@@ -3,18 +3,14 @@
     //Width
     <dimen name="width_0">0dp</dimen>
     <dimen name="width_1">1dp</dimen>
-    <dimen name="width_24">24dp</dimen>
-    <dimen name="width_80">80dp</dimen>
-    <dimen name="width_94">94dp</dimen>
-    <dimen name="width_100">100dp</dimen>
+    <dimen name="width_45">45dp</dimen>
     <dimen name="width_220">220dp</dimen>
-    <dimen name="width_343">343dp</dimen>
-    <dimen name="width_414">414dp</dimen>
 
     //Height
     <dimen name="height_0">0dp</dimen>
     <dimen name="height_1">1dp</dimen>
     <dimen name="height_22">22dp</dimen>
+    <dimen name="height_45">45dp</dimen>
     <dimen name="height_200">200dp</dimen>
     <dimen name="height_220">220dp</dimen>
 
@@ -28,7 +24,6 @@
     <dimen name="font_16">16sp</dimen>
     <dimen name="font_18">18sp</dimen>
     <dimen name="font_20">20sp</dimen>
-
     <dimen name="font_28">28sp</dimen>
 
     //Padding/Margin

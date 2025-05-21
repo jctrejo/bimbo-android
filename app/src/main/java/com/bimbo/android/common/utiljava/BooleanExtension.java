@@ -1,4 +1,4 @@
-package com.bimbo.android.utiljava;
+package com.bimbo.android.common.utiljava;
 
 import static com.bimbo.android.common.Constants.VALUE_6;
 

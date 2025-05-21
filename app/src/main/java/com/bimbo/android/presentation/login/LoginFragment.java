@@ -16,7 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.bimbo.android.R;
 import com.bimbo.android.databinding.FragmentLoginBinding;
-import com.bimbo.android.utiljava.BooleanExtension;
+import com.bimbo.android.common.utiljava.BooleanExtension;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

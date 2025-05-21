@@ -1,4 +1,4 @@
-package com.bimbo.android.utils.loader
+package com.bimbo.android.common.utils.loader
 
 import android.app.Dialog
 import android.content.Context

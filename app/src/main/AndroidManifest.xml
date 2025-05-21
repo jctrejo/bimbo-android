@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Bimboandroid"
+        android:theme="@style/Theme.App.SplashScreen"
         tools:targetApi="31">
         <activity
             android:name=".presentation.init.MainActivity"

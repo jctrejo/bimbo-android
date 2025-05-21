@@ -66,7 +66,8 @@ class PokemonLocalRepository @Inject constructor(
                     imageUrl = response.sprites.frontDefault,
                     height = response.height,
                     weight = response.weight,
-                    types = response.types.sortedBy { it.slot }.map { it.type.name }
+                    types = response.types.sortedBy { it.slot }.map { it.type.name },
+                    description = response.description
                 )
 
                 emit(AppResource.Success(result))

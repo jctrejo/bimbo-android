@@ -8,11 +8,13 @@
     <string name="welcome_message">Bienvenido</string>
     <string name="error_invalid_password">La contraseña debe tener más de 6 caracteres</string>
     <string name="admin">adm: admin@gmail.com contraseña: qwerty123</string>
-    <string name="user_greeting">Hola, %1$s!</string>
+    <string name="user_greeting">Usuario, %1$s!</string>
     <string name="pokemon_list_label">Lista de Pokémon</string>
     <string name="pokemon_image">Imagen del Pokémon</string>
     <string name="logout">Cerrar sesión</string>
     <string name="height_label">Altura: %1$s</string>
     <string name="weight_label">Peso: %1$s</string>
     <string name="type_label">Tipo: %1$s</string>
+    <string name="detail">Detalle de Pokemon</string>
+
 </resources>
